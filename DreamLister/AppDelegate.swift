@@ -88,6 +88,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
 
+//So we have created a reference of the AppDelegate. Everytime we need to refere anything from the AppDelegate
+//such as calling saveContext() we just need to call that on this reference of AppDelegate
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//In order to get the viewContext we will call appDelegate.persistentContainer.viewContext
+//viewContext is the managed object context associated with the main queue
+//So let's make that call easier for us as well
+let context = appDelegate.persistentContainer.viewContext
+//So we now have a single variable for the NSManagedObjectContext 
